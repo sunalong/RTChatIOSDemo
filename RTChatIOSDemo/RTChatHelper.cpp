@@ -36,17 +36,17 @@ void RTChatHelper::init(const char* username)
     char buf[128] = {0};
     snprintf(buf, 127, "%d", userid);
     
-    if (1) { //内网
-        //内网appid
-        RTChatSDKMain::sharedInstance().initSDK("1fcfaa5cdc01502e", "7324e82e18d9d16ca4783aa5f872adf54d17a0175f48fa7c1af0d80211dfff82");
-        RTChatSDKMain::sharedInstance().customRoomServerAddr("192.168.114.4:18888");
-    }
-    else {
+//    if (1) { //内网
+//        //内网appid
+//        RTChatSDKMain::sharedInstance().initSDK("1fcfaa5cdc01502e", "7324e82e18d9d16ca4783aa5f872adf54d17a0175f48fa7c1af0d80211dfff82");
+//        RTChatSDKMain::sharedInstance().customRoomServerAddr("192.168.114.4:18888");
+//    }
+//    else {
         //外网appid
         RTChatSDKMain::sharedInstance().initSDK("3768c59536565afb", "df191ec457951c35b8796697c204382d0e12d4e8cb56f54df6a54394be74c5fe");
-        RTChatSDKMain::sharedInstance().customRoomServerAddr("115.159.251.79:8081");
+        RTChatSDKMain::sharedInstance().customRoomServerAddr("115.159.251.79:8080");
         //    RTChatSDKMain::sharedInstance().customRoomServerAddr("room.audio.mztgame.com:8080");
-    }
+//    }
     
     
     
