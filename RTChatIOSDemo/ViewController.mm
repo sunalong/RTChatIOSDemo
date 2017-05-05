@@ -76,22 +76,18 @@
     RTChatHelper::instance().leaveRoom();
     [self deAllocLocalView];
     
-    _stateLabel.text = @"已离开聊天房间，点击(开始聊天)按钮进入";
-    
-    //2.4版本暂时屏蔽该功能
-    return;
     //erase render view for remote stream
     if (_otherVideoView) {
         [_otherVideoView removeFromSuperview];
         rtchatsdk::RTChatSDKMain::sharedInstance().destroyAVideoRenderWindow((__bridge void*)_otherVideoView);
         self.otherVideoView = nil;
     }
+    
+    _stateLabel.text = @"已离开聊天房间，点击(开始聊天)按钮进入";
 }
 
 -(IBAction)ObserverRemoteVideo:(UISwitch*)sender
 {
-    //2.4版本暂时屏蔽该功能
-    return;
     if (sender.isOn) {
         CGRect rect = [self.view frame];
         // create a render view
@@ -116,16 +112,14 @@
 
 -(IBAction)switchLocalVideoSource:(id)sender
 {
-    //2.4版本暂时屏蔽该功能
-    return;
     NSInteger index = [sender selectedSegmentIndex];
     if (index == 0) {
         //use front camera as video source
-//        rtchatsdk::RTChatSDKMain::sharedInstance().switchVideoSource(kVideoSourceFrontCamera);
+        rtchatsdk::RTChatSDKMain::sharedInstance().switchVideoSource(kVideoSourceFrontCamera);
     }
     else if (index == 1) {
         //use back camera as video source
-//        rtchatsdk::RTChatSDKMain::sharedInstance().switchVideoSource(kVideoSourceBackCamera);
+        rtchatsdk::RTChatSDKMain::sharedInstance().switchVideoSource(kVideoSourceBackCamera);
     }
     else if (index == 2) {
         //use a uiview(any view inherit from uiview) as video source
@@ -138,7 +132,7 @@
         [_shareView loadRequest:request];
         
         [self.view addSubview:_shareView];
-//        rtchatsdk::RTChatSDKMain::sharedInstance().switchVideoSource(kVideoSourceScreen, (__bridge void*)_shareView);
+        rtchatsdk::RTChatSDKMain::sharedInstance().switchVideoSource(kVideoSourceScreen, (__bridge void*)_shareView);
     }
     
     if (index != 2) {
@@ -149,8 +143,6 @@
 
 -(IBAction)switchRemoteVideoSource:(id)sender
 {
-    //2.4版本暂时屏蔽该功能
-    return;
     NSInteger index = [sender selectedSegmentIndex];
     if (index == 0) {
         //看会议视频
@@ -159,7 +151,7 @@
     else if (index == 1) {
         //看远端传回的单人视频
         rtchatsdk::RTChatSDKMain::sharedInstance().switchRemoteTarget(RTChatHelper::instance().currentUser().c_str());
-//        rtchatsdk::RTChatSDKMain::sharedInstance().switchRemoteTarget("11");
+        //        rtchatsdk::RTChatSDKMain::sharedInstance().switchRemoteTarget("11");
     }
     else {
         rtchatsdk::RTChatSDKMain::sharedInstance().switchRemoteTarget(nullptr);
@@ -174,8 +166,6 @@
 
 -(IBAction)sendVideo:(UISwitch*)sender
 {
-    //2.4版本暂时屏蔽该功能
-    return;
     if (sender.isOn) {
         [self allocLocalView];
         if (rtchatsdk::RTChatSDKMain::sharedInstance().startSendVideo() == OPERATION_OK) {
@@ -192,8 +182,6 @@
 
 -(void)allocLocalView
 {
-    //2.4版本暂时屏蔽该功能
-    return;
     CGRect rect = [self.view frame];
     self.localVideoView  = (__bridge UIView*)rtchatsdk::RTChatSDKMain::sharedInstance().createAVideoWindow();
     CGFloat width = rect.size.width / 3;
@@ -206,8 +194,6 @@
 
 -(void)deAllocLocalView
 {
-    //2.4版本暂时屏蔽该功能
-    return;
     [_localVideoView removeFromSuperview];
     rtchatsdk::RTChatSDKMain::sharedInstance().destroyAVideoRenderWindow((__bridge void*)_localVideoView);
     _localVideoView = nil;

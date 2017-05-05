@@ -42,7 +42,7 @@ public:
     const std::string& currentUser() {
         return _currentUser;
     };
-
+    
     
 private:
     std::string _lastRecordUrl;
