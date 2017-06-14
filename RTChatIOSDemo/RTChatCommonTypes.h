@@ -9,6 +9,7 @@
 #ifndef RTChat_RTChatCommonTypes_h
 #define RTChat_RTChatCommonTypes_h
 
+#include <string.h>
 #include <stdint.h>
 
 namespace rtchatsdk {
@@ -45,7 +46,8 @@ namespace rtchatsdk {
         kVoiceOnly = 1,
         kVideo_normalDefinition = 3,
         kVideo_highDefinition = 7,
-        kVideo_veryHighDefinition = 11
+        kVideo_veryHighDefinition = 11,
+        kLookLiveBC = 16,
     };
     
     /// 房间权限类型
@@ -82,95 +84,20 @@ namespace rtchatsdk {
         
         enInitSDK,
         
-        //	/// 请求逻辑服务器信息
-        //	enRequestLogicInfo = 1,
-        //
-        //	/// 返回需要连接的逻辑服务器信息
-        //	enNotifyLogicInfo = 2,
-        //
-        //	/// 请求登录
-        //	enRequestLogin = 3,
-        //
-        //	/// 返回登录结果
-        //	enNotifyLoginResult = 4,
-        //
-        //	/// 创建房间
-        //	enRequestCreateRoom = 5,
-        //
-        //	/// 创建房间返回
-        //	enNotifyCreateResult = 6,
-        
         /// 加入房间
         enRequestEnterRoom = 7,
-        
-        //	/// 加入房间返回
-        //	enNotifyEnterResult = 8,
-        
-        //	// 申请房间列表
-        //	enRequestRoomList = 9,
-        
-        //	/// 返回房间列表
-        //	enNotifyRoomList = 10,
-        
-        //	/// 增加收听通道
-        //	enNotifyAddVoiceUser = 11,
-        
-        //	/// 加入麦序
-        //	enJoinMicQueue = 12,
-        //
-        //	/// 离开麦序
-        //	enLeaveMicQueue = 13,
-        
-        //	/// 返回麦序
-        //	enNotifyMicQueue = 14,
-        //
-        //	/// 到某人聊天了
-        //	enNotifyTakeMic = 15,
         
         /// 离开房间
         enRequestLeaveRoom = 16,
         
-        //    /// 删除一个通道
-        //	enNotifyDelVoiceUser = 17,
-        //
-        //    /// 通知有人进入房间
-        //	enNotifySomeEnterRoom = 18,
-        //
-        //    /// 有人离开房间
-        //	enNotifySomeLeaveRoom = 19,
-        //
-        //	/// 有人想和你随机聊天
-        //	enNotifyRandChat = 21,
-        //
-        //	/// 返回是否要随机聊天
-        //	enReturnRandChat = 22,
-        //
-        //    /// 更新权限
-        //	enRequestUpdatePower = 23,
-        
-        //	/// 通知更新权限
-        //	enNotifyUpdatePower = 24,
+        /// 通知房间内用户视频位置信息
+        enNotifyUserVideoLayout = 17,
         
         /// 请求录音
         enRequestRec = 25,
         
         /// 请求播放
         enRequestPlay = 26,
-        
-        //    /// 请求漂流瓶
-        //	enRequestRandPlay = 27,
-        //
-        //	/// 通知漂流瓶
-        //	enNotifyRandPlay = 28,
-        //
-        //	/// 分配麦
-        //	enRequestAssignMic = 29,
-        
-        //	/// 分配返回结果
-        //	enNotifyAssignResult = 30,
-        
-        //	/// 更新权限结果
-        //	enNotifyUpdatePowerResult = 31,
         
         /// 设置头像回调
         enReqSetAvaterResult = 32,
@@ -193,12 +120,6 @@ namespace rtchatsdk {
         ///通知经纬度定位回调
         enNotifyCoodinateInfo = 38,
         
-        //    /// 和此人聊天
-        //    enTalkWithSome = 39,
-        //
-        //    /// 通知进入房间
-        //    enEnterTalkRoom = 40,
-        
         /// 通知发送语音的结果
         enNotifySendVoice = 41,
         
@@ -209,7 +130,10 @@ namespace rtchatsdk {
         enNotifySendScreen = 43,
         
         /// 播放测检测到声音
-        enVoiceDetected = 44
+        enVoiceDetected = 44,
+        
+        /// 渲染帧对象尺寸变化
+        enFrameSizeChanged = 45,
     };
     
     enum SdkErrorCode {
@@ -239,6 +163,12 @@ namespace rtchatsdk {
         kHighDifinition,      //高清
         kSuperHighDifinition  //超高清
     };
+
+	enum EnDevieType {
+		kCameraType,    //camera 
+		kMicrophoneType,      //Microphone
+		kSpeakerType  //speaker
+	};
     
     typedef void (*MsgCallBackFunc)(SdkResponseCmd cmdType, SdkErrorCode error, const char* dataPtr, uint64_t dataSize);
 }

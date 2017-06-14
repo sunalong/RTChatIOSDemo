@@ -10,7 +10,9 @@
 #import "RTChatHelper.hpp"
 #include "RTChatSdk.h"
 
-@interface ViewController ()
+@interface ViewController () {
+    bool landspace;
+}
 
 @property IBOutlet UILabel* stateLabel;
 @property NSString* roomID;
@@ -30,6 +32,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    
     _sendVideo = true;
     
     _stateLabel.text = @"点击(开始聊天)按钮进入房间";
@@ -41,6 +45,21 @@
     //    RTChatHelper::instance()._targetScreenView = (__bridge void*)self.view;
     
     NSLog(@"width=%f, height=%f", self.view.frame.size.width, self.view.frame.size.height);
+}
+
+- (void)deviceOrientationDidChange:(NSNotification*)notification
+{
+    switch ([UIDevice currentDevice].orientation) {
+        case UIDeviceOrientationLandscapeLeft:
+        case UIDeviceOrientationLandscapeRight:
+            landspace = true;
+            break;
+        default:
+            landspace = false;
+            break;
+    }
+    
+    [self frameSizeChanged];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,11 +83,30 @@
     RTChatHelper::instance().setLouderSpeaker(sender.isOn);
 }
 
+-(void)frameSizeChanged
+{
+    float w_h_ratio = RTChatHelper::instance().w_h_rate_;
+    if (!landspace && w_h_ratio > 1) {
+        w_h_ratio = 1 / w_h_ratio;
+    }
+    
+    CGFloat old_width = _otherVideoView.frame.size.width;
+    CGFloat r_new_height = old_width / w_h_ratio;
+    [_otherVideoView setFrame:CGRectMake(0, 0, old_width, r_new_height)];
+    NSLog(@"new_width=%f, new_height=%f, w_h_ratio=%f", old_width, r_new_height, w_h_ratio);
+    
+    CGRect rect = _localVideoView.frame;
+    old_width = rect.size.width;
+    CGFloat l_new_height = old_width / w_h_ratio;
+    [_localVideoView setFrame:CGRectMake(self.view.frame.size.width - old_width, r_new_height - l_new_height, old_width, l_new_height)];
+}
+
 -(IBAction)BeginChat
 {
     RTChatHelper::instance().joinRoom([_roomID UTF8String], nil);
     
     _stateLabel.text = @"正在聊天中，点击(停止聊天)按钮退出";
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(frameSizeChanged) name:@"ON_FRMAE_SIZE_CHANGED" object:nil];
 }
 
 -(IBAction)StopChat
@@ -92,7 +130,7 @@
         CGRect rect = [self.view frame];
         // create a render view
         UIView* ovideoView = (__bridge UIView*)rtchatsdk::RTChatSDKMain::sharedInstance().createAVideoWindow();
-        [ovideoView setFrame:CGRectMake(0, 0, rect.size.width, rect.size.width * 1.222)];
+        [ovideoView setFrame:CGRectMake(0, 0, rect.size.width, rect.size.width * 1.333)];
         [ovideoView setBackgroundColor:[UIColor blackColor]];
         [self.view insertSubview:ovideoView atIndex:1];
         
@@ -114,17 +152,19 @@
 {
     NSInteger index = [sender selectedSegmentIndex];
     if (index == 0) {
+//        rtchatsdk::RTChatSDKMain::sharedInstance().switchUserShowPostionIndex("[\"wangxin\",\"lulu\"]");
         //use front camera as video source
         rtchatsdk::RTChatSDKMain::sharedInstance().switchVideoSource(kVideoSourceFrontCamera);
     }
     else if (index == 1) {
+//        rtchatsdk::RTChatSDKMain::sharedInstance().switchUserShowPostionIndex("[\"\",\"\",\"wangxin\",\"lulu\"]");
         //use back camera as video source
         rtchatsdk::RTChatSDKMain::sharedInstance().switchVideoSource(kVideoSourceBackCamera);
     }
     else if (index == 2) {
         //use a uiview(any view inherit from uiview) as video source
         CGRect rect = [self.view frame];
-        _shareView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.width * 1.222)];
+        _shareView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.width * 1.333)];
         
         //replace url with your a website which can be access
         NSURL* url = [NSURL URLWithString:@"http://192.168.114.6"];
@@ -151,10 +191,20 @@
     else if (index == 1) {
         //看远端传回的单人视频
         rtchatsdk::RTChatSDKMain::sharedInstance().switchRemoteTarget(RTChatHelper::instance().currentUser().c_str());
-        //        rtchatsdk::RTChatSDKMain::sharedInstance().switchRemoteTarget("11");
     }
     else {
         rtchatsdk::RTChatSDKMain::sharedInstance().switchRemoteTarget(nullptr);
+    }
+}
+
+-(IBAction)switchDisplayMode:(id)sender
+{
+    NSInteger index = [sender selectedSegmentIndex];
+    if (index == 0) {
+        rtchatsdk::RTChatSDKMain::sharedInstance().switchRemoteVideoShowStyle(4);
+    }
+    else if (index == 1){
+        rtchatsdk::RTChatSDKMain::sharedInstance().switchRemoteVideoShowStyle(5);
     }
 }
 
@@ -180,13 +230,18 @@
     }
 }
 
+-(IBAction)enableBeauty:(UISwitch*)sender
+{
+    rtchatsdk::RTChatSDKMain::sharedInstance().enableBeautify(sender.isOn);
+}
+
 -(void)allocLocalView
 {
     CGRect rect = [self.view frame];
     self.localVideoView  = (__bridge UIView*)rtchatsdk::RTChatSDKMain::sharedInstance().createAVideoWindow();
     CGFloat width = rect.size.width / 3;
-    CGFloat height = width * 1.222;
-    [_localVideoView setFrame:CGRectMake((rect.size.width - width), (rect.size.width*1.222 - height), width, height)];
+    CGFloat height = width * 1.333;
+    [_localVideoView setFrame:CGRectMake((rect.size.width - width), (rect.size.width*1.333 - height), width, height)];
     [_localVideoView setBackgroundColor:[UIColor blackColor]];
     
     [self.view insertSubview:_localVideoView atIndex:5];

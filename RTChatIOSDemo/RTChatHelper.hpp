@@ -21,7 +21,7 @@ public:
     
     static RTChatHelper& instance();
     
-    void init(const char* username);
+    void init(const char* username, const char* appid, const char* appkey, const char* platfrom_addr);
     
     void joinRoom(const char* roomid, void* ptrWindow);
     
@@ -42,7 +42,8 @@ public:
     const std::string& currentUser() {
         return _currentUser;
     };
-    
+
+    float       w_h_rate_;
     
 private:
     std::string _lastRecordUrl;
