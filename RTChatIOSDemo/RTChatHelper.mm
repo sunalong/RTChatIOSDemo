@@ -30,6 +30,7 @@ RTChatHelper& RTChatHelper::instance()
 
 void RTChatHelper::init(const char* username, const char* appid, const char* appkey, const char* platfrom_addr)
 {
+    srand( time( 0 ) );
     RTChatSDKMain::sharedInstance().registerMsgCallback(sdkCallBack);
     RTChatSDKMain::sharedInstance().initSDK(appid, appkey);
     RTChatSDKMain::sharedInstance().customRoomServerAddr(platfrom_addr);
@@ -76,12 +77,12 @@ void RTChatHelper::adjustVolume(float value)
 
 void RTChatHelper::setLouderSpeaker(bool enable)
 {
-    if (enable) {
-        RTChatSDKMain::sharedInstance().switchRemoteVideoShowStyle(2);
-    }
-    else {
-        RTChatSDKMain::sharedInstance().switchRemoteVideoShowStyle(1);
-    }
+//    if (enable) {
+//        RTChatSDKMain::sharedInstance().switchRemoteVideoShowStyle(2);
+//    }
+//    else {
+//        RTChatSDKMain::sharedInstance().switchRemoteVideoShowStyle(1);
+//    }
     RTChatSDKMain::sharedInstance().setLoudSpeaker(enable);
 }
 

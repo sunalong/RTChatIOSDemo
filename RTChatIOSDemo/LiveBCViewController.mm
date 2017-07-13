@@ -8,6 +8,7 @@
 
 #import "LiveBCViewController.h"
 #import "RTChatSdk.h"
+#include "RTChatHelper.hpp"
 
 @interface LiveBCViewController ()
 
@@ -61,6 +62,11 @@
         rtchatsdk::RTChatSDKMain::sharedInstance().destroyAVideoRenderWindow((__bridge void*)_otherVideoView);
         self.otherVideoView = nil;
     }
+}
+
+-(IBAction)setLouderSpeaker:(UISwitch*)sender
+{
+    RTChatHelper::instance().setLouderSpeaker(sender.isOn);
 }
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

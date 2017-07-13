@@ -16,7 +16,9 @@ using namespace rtchatsdk;
 
 class RTChatHelper {
 public:
-    RTChatHelper() {};
+    RTChatHelper() :
+    w_h_rate_(0.75)
+    {};
     virtual ~RTChatHelper() {};
     
     static RTChatHelper& instance();
