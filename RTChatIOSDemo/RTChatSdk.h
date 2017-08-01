@@ -28,10 +28,14 @@ public:
     SdkErrorCode initSDK(const char* appid, const char* key);
     
     /// 设置自定义参数
-    void setParams(const char* voiceUploadUrl, const char* xunfeiAppID);
+    [[deprecated ("use SetSdkParams")]] void setParams(const char* voiceUploadUrl, const char* xunfeiAppID);
     
     /// 设置平台连接地址
-    void customRoomServerAddr(const char* roomServerAddr);
+    [[deprecated ("use SetSdkParams")]] void customRoomServerAddr(const char* roomServerAddr);
+    
+    /// 设置sdk参数接口, params为json字符串
+    /// {"RoomServerAddr":"room.audio.mztgame.com:8080", "XunfeiAppID":"xxxx",  "VoiceUploadUrl":"http://giant.audio.mztgame.com/wangpan.php", "LiveServerAddr":"livebc.audio.mztgame.com:8000"}
+    void SetSdkParams(const char* params);
     
     //改变语音聊天登录用户信息
     SdkErrorCode setUserInfo(const char* username, const char* userkey);
@@ -48,8 +52,9 @@ public:
     //获取SDK当前操作状态，用户发起操作前可以检测一下状态判断可否继续
     SdkOpState getSdkState();
     
-    /// 加入房间(主线程)
-    SdkErrorCode requestJoinPlatformRoom(const char* roomid_p, enMediaType meida_type = kVoiceOnly, int layout_mode = 4);
+    /// 向平台请求加入房间(主线程)
+    /// media_type = (enMediaType|enMediaProperty|enConferenceProperty)
+    SdkErrorCode requestJoinPlatformRoom(const char* roomid_p, int meida_type = kVoiceOnly, int layout_mode = 4);
     
     /// 向平台请求退出房间(主线程)
     SdkErrorCode requestLeavePlatformRoom();
@@ -86,6 +91,9 @@ public:
     
     /// 切换视频源对象(null为看会议视频，否则为目标用户视频)
     SdkErrorCode switchRemoteTarget(const char* userID);
+    
+    /// 打开或关闭一路视频源对象(userID为""看会议视频，否则为目标用户视频, ptrWindow为空则关闭该路视频流)
+    SdkErrorCode observerRemoteTargetVideo(const char* userID, void* ptrWindow);
     
     /// 切换视频显示模式，即多用户在显示区域的布局样式
     SdkErrorCode switchRemoteVideoShowStyle(int styleIndex);
@@ -132,9 +140,14 @@ public:
 
     //打开美颜
     void enableBeautify(bool enabled);
+    
+    SdkErrorCode startPlayFileAsMic(const char* fileNameUTF8, bool mix_with_mic);
+    
+    SdkErrorCode stopPlayFileAsMic();
 
 	//设置变音参数 pitch = -10 ~ +10
-	SdkErrorCode setVoiceChangeParm(int pitch);
+	//            reverbLevel = 0 ~ 9; 0 为原始声音，1到9，混响级别逐渐增强；
+	SdkErrorCode setVoiceChangeParm(int pitch, int reverbLevel);
 
 #ifdef WIN32
     //获取windows下可用媒体设备

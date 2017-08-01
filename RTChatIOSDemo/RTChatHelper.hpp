@@ -23,7 +23,7 @@ public:
     
     static RTChatHelper& instance();
     
-    void init(const char* username, const char* appid, const char* appkey, const char* platfrom_addr);
+    void init(const char* username, const char* appid, const char* appkey, const char* platfrom_addr, const char* cheat_src, const char* lice_server_ip);
     
     void joinRoom(const char* roomid, void* ptrWindow);
     

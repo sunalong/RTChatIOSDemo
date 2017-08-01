@@ -34,6 +34,7 @@
 		43809E9C1E8CC101009B95E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43809E9A1E8CC101009B95E7 /* LaunchScreen.storyboard */; };
 		BF89BC2E1EF0EFEE0099BE19 /* LiveBCViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF89BC2C1EF0EFEE0099BE19 /* LiveBCViewController.mm */; };
 		BF89BC2F1EF0EFEE0099BE19 /* RTChatHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF89BC2D1EF0EFEE0099BE19 /* RTChatHelper.mm */; };
+		BFA1ACF71F308B5A0098E0B7 /* MusicPlayTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA1ACF61F308B5A0098E0B7 /* MusicPlayTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,8 @@
 		BF89BC2B1EF0EFEE0099BE19 /* LiveBCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveBCViewController.h; sourceTree = "<group>"; };
 		BF89BC2C1EF0EFEE0099BE19 /* LiveBCViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LiveBCViewController.mm; sourceTree = "<group>"; };
 		BF89BC2D1EF0EFEE0099BE19 /* RTChatHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RTChatHelper.mm; sourceTree = "<group>"; };
+		BFA1ACF51F308B5A0098E0B7 /* MusicPlayTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicPlayTool.h; sourceTree = "<group>"; };
+		BFA1ACF61F308B5A0098E0B7 /* MusicPlayTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicPlayTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,8 @@
 		435599571E8CB77E0075E3A8 /* RTChatIOSDemo */ = {
 			isa = PBXGroup;
 			children = (
+				BFA1ACF51F308B5A0098E0B7 /* MusicPlayTool.h */,
+				BFA1ACF61F308B5A0098E0B7 /* MusicPlayTool.m */,
 				43809E801E8CBFEE009B95E7 /* libs */,
 				435599581E8CB77E0075E3A8 /* AppDelegate.h */,
 				43809E7E1E8CBF64009B95E7 /* AppDelegate.mm */,
@@ -281,6 +286,7 @@
 				43809E901E8CC08A009B95E7 /* LoginViewController.mm in Sources */,
 				BF89BC2F1EF0EFEE0099BE19 /* RTChatHelper.mm in Sources */,
 				BF89BC2E1EF0EFEE0099BE19 /* LiveBCViewController.mm in Sources */,
+				BFA1ACF71F308B5A0098E0B7 /* MusicPlayTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

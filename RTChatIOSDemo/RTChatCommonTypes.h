@@ -43,11 +43,31 @@ namespace rtchatsdk {
     
     enum enMediaType
     {
-        kVoiceOnly = 1,
-        kVideo_normalDefinition = 3,
-        kVideo_highDefinition = 7,
-        kVideo_veryHighDefinition = 11,
-        kLookLiveBC = 16,
+        kVoiceOnly = 0x01,
+        kVideoOnly = 0x02,
+        kVoiceAndVideo = 0x03,
+        kLookLiveBC = 0x10,
+    };
+    
+    enum enMediaProperty
+    {
+        kVideo_normalDefinition = 0x00,
+        kVideo_highDefinition = 0x04,
+        kVideo_veryHighDefinition = 0x08,
+        
+        kVoiceLowMark = 0x00,
+        kVoiceMediumMark = 0x20,
+        kVoiceHighMark = 0x40,
+        kMusicLowMark = 0x60,
+        kMusicMediumMark = 0x80,
+        kMusicHighMark = 0xA0,
+    };
+    
+    enum enConferenceProperty
+    {
+        kConferenceNormal = 0x00,
+        kConferenceNeedForward = 0x100,
+        kConferenceNeedMix = 0x200,
     };
     
     /// 房间权限类型
@@ -92,6 +112,11 @@ namespace rtchatsdk {
         
         /// 通知房间内用户视频位置信息
         enNotifyUserVideoLayout = 17,
+
+// user join room add wlf
+        enNotifyUserJoinRoom = 18,
+
+        enNotifyUserLeaveRoom = 19,
         
         /// 请求录音
         enRequestRec = 25,

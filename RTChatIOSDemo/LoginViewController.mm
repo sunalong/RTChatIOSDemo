@@ -20,6 +20,8 @@
 @property IBOutlet UITextField* platformAddr2;
 @property IBOutlet UITextField* platformAddr3;
 @property IBOutlet UITextField* platformAddr4;
+@property IBOutlet UITextField* cheatingAddr;
+@property IBOutlet UITextField* liveServerAddr;
 
 @end
 
@@ -48,18 +50,24 @@
 
 -(IBAction)randomLogin
 {
-    RTChatHelper::instance().init([_userInputField.text UTF8String], [appID UTF8String], [appKey UTF8String], [choosedPlatfromAddr UTF8String]);
+    RTChatHelper::instance().init([_userInputField.text UTF8String], [appID UTF8String], [appKey UTF8String], [choosedPlatfromAddr UTF8String], [_cheatingAddr.text UTF8String], [_liveServerAddr.text UTF8String]);
 }
 
 -(IBAction)WangxinLogin
 {
-    RTChatHelper::instance().init("wangxin", [appID UTF8String], [appKey UTF8String], [choosedPlatfromAddr UTF8String]);
+    RTChatHelper::instance().init("wangxin", [appID UTF8String], [appKey UTF8String], [choosedPlatfromAddr UTF8String], [_cheatingAddr.text UTF8String], [_liveServerAddr.text UTF8String]);
 }
 
 -(IBAction)LuluLogin
 {
-    RTChatHelper::instance().init("lulu", [appID UTF8String], [appKey UTF8String], [choosedPlatfromAddr UTF8String]);
+    RTChatHelper::instance().init("lulu", [appID UTF8String], [appKey UTF8String], [choosedPlatfromAddr UTF8String], [_cheatingAddr.text UTF8String], [_liveServerAddr.text UTF8String]);
 }
+
+-(IBAction)KiwiLogin
+{
+    RTChatHelper::instance().init("kiwi", [appID UTF8String], [appKey UTF8String], [choosedPlatfromAddr UTF8String], [_cheatingAddr.text UTF8String], [_liveServerAddr.text UTF8String]);
+}
+
 
 -(IBAction)platfromAddrChoosed:(UISegmentedControl*)sender
 {
@@ -83,6 +91,11 @@
         appID = @"3768c59536565afb";
         appKey = @"df191ec457951c35b8796697c204382d0e12d4e8cb56f54df6a54394be74c5fe";
     }
+}
+
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 
 /*

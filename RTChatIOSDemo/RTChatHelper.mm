@@ -28,12 +28,24 @@ RTChatHelper& RTChatHelper::instance()
     return *s_rTChatHelper;
 }
 
-void RTChatHelper::init(const char* username, const char* appid, const char* appkey, const char* platfrom_addr)
+void RTChatHelper::init(const char* username, const char* appid, const char* appkey, const char* platfrom_addr, const char* cheat_src, const char* lice_server_ip)
 {
     srand( time( 0 ) );
     RTChatSDKMain::sharedInstance().registerMsgCallback(sdkCallBack);
+
+    NSDictionary* dic_data = [NSDictionary dictionaryWithObjectsAndKeys:@"http://giant.audio.mztgame.com/wangpan.php", @"VoiceUploadUrl", @"5853625c", @"XunfeiAppID", [NSString stringWithUTF8String:platfrom_addr], @"RoomServerAddr", [NSString stringWithUTF8String:lice_server_ip], @"LiveServerAddr", [NSString stringWithUTF8String:cheat_src], @"CheatingIP", NSTemporaryDirectory(), @"DebugLogPath",nil];
+    if ([NSJSONSerialization isValidJSONObject:dic_data]) {
+        NSData* data = [NSJSONSerialization dataWithJSONObject:dic_data options:NSJSONWritingPrettyPrinted error:nil];
+        NSString* data_str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        RTChatSDKMain::sharedInstance().SetSdkParams([data_str UTF8String]);
+    }
+    
     RTChatSDKMain::sharedInstance().initSDK(appid, appkey);
-    RTChatSDKMain::sharedInstance().customRoomServerAddr(platfrom_addr);
+    
+    //测试服
+//    RTChatSDKMain::sharedInstance().customRoomServerAddr("roomv2.audio.mztgame.com:8080");
+    //正式服
+//    RTChatSDKMain::sharedInstance().customRoomServerAddr("room.audio.mztgame.com:8080");
     
 //    if (1) { //内网
 //        //内网appid
@@ -47,7 +59,7 @@ void RTChatHelper::init(const char* username, const char* appid, const char* app
 //        //    RTChatSDKMain::sharedInstance().customRoomServerAddr("room.audio.mztgame.com:8080");
 //    }
 
-    RTChatSDKMain::sharedInstance().setParams("http://giant.audio.mztgame.com/wangpan.php", "5853625c");
+//    RTChatSDKMain::sharedInstance().setParams("http://giant.audio.mztgame.com/wangpan.php", "5853625c");
     RTChatSDKMain::sharedInstance().setUserInfo(username, "32261be4ed6fd0d90976da1f7a85237d");
     
     _currentUser = username;
@@ -55,14 +67,7 @@ void RTChatHelper::init(const char* username, const char* appid, const char* app
 
 void RTChatHelper::joinRoom(const char* roomid, void *ptrWindow)
 {
-//    int code = RTChatSDKMain::sharedInstance().startRecordVoice(true);
-//    RTChatSDKMain::sharedInstance().joinRoom("64:ff9b::7a0b:3acc", 1, ptrWindow);
-//    RTChatSDKMain::sharedInstance().joinRoom("64:ff9b::122.11.58.204", 1, ptrWindow);
-//    RTChatSDKMain::sharedInstance().joinRoom("192.168.96.189", 6999, 3, ptrWindow);
-//    RTChatSDKMain::sharedInstance().joinRoom("122.11.58.204", 7020, 1, ptrWindow);
-//    RTChatSDKMain::sharedInstance().joinRoom("192.168.2.1", 6999, 1, ptrWindow);
-    RTChatSDKMain::sharedInstance().requestJoinPlatformRoom(roomid, kVoiceOnly, 4);
-//    RTChatSDKMain::sharedInstance().joinRoom("192.168.69.2", 6999, 1, ptrWindow);
+    RTChatSDKMain::sharedInstance().requestJoinPlatformRoom(roomid, kVoiceOnly|kMusicLowMark|kConferenceNeedMix, 4);
 }
 
 void RTChatHelper::leaveRoom()
@@ -93,12 +98,20 @@ void RTChatHelper::observerLocalVideoWindow(void* ptrWindow)
 
 void RTChatHelper::voiceCallBack(SdkResponseCmd cmdType, SdkErrorCode error, const char* dataPtr, uint64_t dataSize)
 {
-    std::cout << cmdType << "---" << error << "---" << dataPtr << std::endl;
-    if (cmdType == enRequestEnterRoom && error == OPERATION_OK) {
-//        RTChatSDKMain::sharedInstance().startSendVideo(true, _targetScreenView);
+//    std::cout << cmdType << "---" << error << "---" << dataPtr << std::endl;
+    if (cmdType == enRequestEnterRoom) {
+        NSLog(@"%s", dataPtr);
+    }
+    else if (cmdType == enInitSDK) {
+        if (error == OPERATION_OK) {
+            NSLog(@"初始化sdk成功");
+        }
+        else {
+            NSLog(@"初始化sdk失败");
+        }
     }
     else if (cmdType == enRequestRec && error == OPERATION_OK) {
-        printf("录音回调结果：%s\n", dataPtr);
+        NSLog(@"录音回调结果：%s\n", dataPtr);
         _lastRecordUrl = dataPtr;
     }
     else if (cmdType == enFrameSizeChanged && error == OPERATION_OK) {
@@ -109,6 +122,12 @@ void RTChatHelper::voiceCallBack(SdkResponseCmd cmdType, SdkErrorCode error, con
         NSLog(@"ns_width=%@, ns_height=%@", ns_width, ns_height);
         w_h_rate_ =  ns_width.floatValue / ns_height.floatValue;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ON_FRMAE_SIZE_CHANGED" object:nil];
+    }
+    else if (cmdType == enNotifyUserJoinRoom) {
+        NSLog(@"新进用户：%s", dataPtr);
+    }
+    else if (cmdType == enNotifyUserLeaveRoom) {
+        NSLog(@"离开用户：%s", dataPtr);
     }
 }
 

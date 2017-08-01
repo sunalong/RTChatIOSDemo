@@ -9,6 +9,7 @@
 #import "RecorderViewController.h"
 #import "RTChatSdk.h"
 #import "RTChatHelper.hpp"
+#import "MusicPlayTool.h"
 
 @interface RecorderViewController ()
 
@@ -60,6 +61,17 @@
 -(IBAction)ReturnBack
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(IBAction)switchBgMusic:(UISwitch*)sender
+{
+    NSString* file_path = [[NSBundle mainBundle] pathForResource:@"music48" ofType:@"wav"];
+    if (sender.on) {
+        [MusicPlayTool.tool playMusicWithFileName:file_path];
+    }
+    else {
+        [MusicPlayTool.tool stopMusic];
+    }
 }
 
 /*

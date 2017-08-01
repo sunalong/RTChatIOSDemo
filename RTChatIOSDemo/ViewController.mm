@@ -72,11 +72,6 @@
     self.roomID = [sender text];
 }
 
--(IBAction)setLouderSpeaker:(UISwitch*)sender
-{
-    RTChatHelper::instance().setLouderSpeaker(sender.isOn);
-}
-
 -(void)frameSizeChanged
 {
     float w_h_ratio = RTChatHelper::instance().w_h_rate_;
@@ -130,7 +125,8 @@
         
         self.otherVideoView = ovideoView;
         //associate render view to remote video stream
-        rtchatsdk::RTChatSDKMain::sharedInstance().startObserverRemoteVideo((__bridge void*)ovideoView);
+//        rtchatsdk::RTChatSDKMain::sharedInstance().startObserverRemoteVideo((__bridge void*)ovideoView);
+        rtchatsdk::RTChatSDKMain::sharedInstance().observerRemoteTargetVideo("", (__bridge void*)ovideoView);
     }
     else {
         rtchatsdk::RTChatSDKMain::sharedInstance().stopObserverRemoteVideo();
@@ -138,6 +134,7 @@
         [_otherVideoView removeFromSuperview];
         // destroy a render view
         rtchatsdk::RTChatSDKMain::sharedInstance().destroyAVideoRenderWindow((__bridge void*)_otherVideoView);
+        rtchatsdk::RTChatSDKMain::sharedInstance().observerRemoteTargetVideo("", nullptr);
         self.otherVideoView = nil;
     }
 }
@@ -175,22 +172,6 @@
     }
 }
 
--(IBAction)switchRemoteVideoSource:(id)sender
-{
-    NSInteger index = [sender selectedSegmentIndex];
-    if (index == 0) {
-        //看会议视频
-        rtchatsdk::RTChatSDKMain::sharedInstance().switchRemoteTarget(nullptr);
-    }
-    else if (index == 1) {
-        //看远端传回的单人视频
-        rtchatsdk::RTChatSDKMain::sharedInstance().switchRemoteTarget(RTChatHelper::instance().currentUser().c_str());
-    }
-    else {
-        rtchatsdk::RTChatSDKMain::sharedInstance().switchRemoteTarget(nullptr);
-    }
-}
-
 -(IBAction)switchDisplayMode:(id)sender
 {
     NSInteger index = [sender selectedSegmentIndex];
@@ -213,18 +194,6 @@
         default:
             break;
     }
-}
-
--(IBAction)volumeValueChanged:(UISlider*)sender
-{
-    float_t value = [sender value];
-    RTChatHelper::instance().adjustVolume(value);
-}
-
--(IBAction)speechValueChanged:(UISlider*)sender
-{
-    float_t value = [sender value];
-    rtchatsdk::RTChatSDKMain::sharedInstance().setVoiceChangeParm(value);
 }
 
 -(IBAction)sendVideo:(UISwitch*)sender
@@ -276,6 +245,17 @@
 {
     [self StopChat];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(IBAction)switchBgMusic:(UISwitch*)sender
+{
+    NSString* file_path = [[NSBundle mainBundle] pathForResource:@"music48" ofType:@"wav"];
+    if (sender.on) {
+        RTChatSDKMain::sharedInstance().startPlayFileAsMic([file_path UTF8String], true);
+    }
+    else {
+        RTChatSDKMain::sharedInstance().stopPlayFileAsMic();
+    }
 }
 
 @end
