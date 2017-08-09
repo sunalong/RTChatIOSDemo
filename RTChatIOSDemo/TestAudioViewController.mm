@@ -60,8 +60,14 @@ using namespace rtchatsdk;
 
 -(IBAction)speechValueChanged:(UISlider*)sender
 {
-    float_t value = [sender value];
-    RTChatSDKMain::sharedInstance().setVoiceChangeParm(value, 1);
+    int value = [sender value];
+    RTChatSDKMain::sharedInstance().setVoiceChangeParm(value, 0);
+}
+
+-(IBAction)ReverbValueChanged:(UISlider*)sender
+{
+    int value = [sender value];
+    RTChatSDKMain::sharedInstance().setVoiceChangeParm(0, value);
 }
 
 -(IBAction)switchBgMusic:(UISwitch*)sender

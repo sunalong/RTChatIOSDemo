@@ -32,6 +32,8 @@ void RTChatHelper::init(const char* username, const char* appid, const char* app
 {
     srand( time( 0 ) );
     RTChatSDKMain::sharedInstance().registerMsgCallback(sdkCallBack);
+    
+    RTChatSDKMain::sharedInstance().initSDK(appid, appkey);
 
     NSDictionary* dic_data = [NSDictionary dictionaryWithObjectsAndKeys:@"http://giant.audio.mztgame.com/wangpan.php", @"VoiceUploadUrl", @"5853625c", @"XunfeiAppID", [NSString stringWithUTF8String:platfrom_addr], @"RoomServerAddr", [NSString stringWithUTF8String:lice_server_ip], @"LiveServerAddr", [NSString stringWithUTF8String:cheat_src], @"CheatingIP", NSTemporaryDirectory(), @"DebugLogPath",nil];
     if ([NSJSONSerialization isValidJSONObject:dic_data]) {
@@ -40,7 +42,7 @@ void RTChatHelper::init(const char* username, const char* appid, const char* app
         RTChatSDKMain::sharedInstance().SetSdkParams([data_str UTF8String]);
     }
     
-    RTChatSDKMain::sharedInstance().initSDK(appid, appkey);
+    
     
     //测试服
 //    RTChatSDKMain::sharedInstance().customRoomServerAddr("roomv2.audio.mztgame.com:8080");

@@ -34,7 +34,7 @@
 //    
 //    [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:options error:nil];
     [session setMode:AVAudioSessionModeDefault error:nil];
-    [session setMode:AVAudioSessionModeVoiceChat error:nil];
+//    [session setMode:AVAudioSessionModeVoiceChat error:nil];
 }
 
 + (instancetype)tool
