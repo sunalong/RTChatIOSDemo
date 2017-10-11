@@ -22,6 +22,8 @@
 @property UIView* otherVideoView;
 @property UIWebView* shareView;
 
+@property UIView*  MovieView;
+
 @property bool sendVideo;
 
 @end
@@ -129,7 +131,8 @@
         rtchatsdk::RTChatSDKMain::sharedInstance().observerRemoteTargetVideo("", (__bridge void*)ovideoView);
     }
     else {
-        rtchatsdk::RTChatSDKMain::sharedInstance().stopObserverRemoteVideo();
+        rtchatsdk::RTChatSDKMain::sharedInstance().observerRemoteTargetVideo("", nullptr);
+//        rtchatsdk::RTChatSDKMain::sharedInstance().stopObserverRemoteVideo();
         
         [_otherVideoView removeFromSuperview];
         // destroy a render view
@@ -158,12 +161,15 @@
         _shareView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, rect.size.width * 0.8, rect.size.width * 1.333 * 0.8)];
         
         //replace url with your a website which can be access
-        NSURL* url = [NSURL URLWithString:@"http://www.163.com"];
+        NSURL* url = [NSURL URLWithString:@"http://192.168.114.6"];
         NSURLRequest* request = [NSURLRequest requestWithURL:url];
         [_shareView loadRequest:request];
         
         [self.view addSubview:_shareView];
         rtchatsdk::RTChatSDKMain::sharedInstance().switchVideoSource(kVideoSourceScreen, (__bridge void*)_shareView);
+    }
+    else if (index == 3) {
+        rtchatsdk::RTChatSDKMain::sharedInstance().switchVideoSource(kVideoSourceMediaFile);
     }
     
     if (index != 2) {
@@ -196,25 +202,42 @@
     }
 }
 
--(IBAction)sendVideo:(UISwitch*)sender
+-(IBAction)PreviewCamera:(UISwitch*)sender
 {
     if (sender.isOn) {
         [self allocLocalView];
-        if (rtchatsdk::RTChatSDKMain::sharedInstance().startSendVideo() == OPERATION_OK) {
-            rtchatsdk::RTChatSDKMain::sharedInstance().observerLocalVideoWindow(true, (__bridge void*)_localVideoView);
-        }
-        
+        rtchatsdk::RTChatSDKMain::sharedInstance().observerLocalVideoWindow(true, (__bridge void*)_localVideoView);
     }
     else {
         rtchatsdk::RTChatSDKMain::sharedInstance().observerLocalVideoWindow(false);
-        rtchatsdk::RTChatSDKMain::sharedInstance().stopSendVideo();
         [self deAllocLocalView];
+    }
+}
+
+-(IBAction)sendVideo:(UISwitch*)sender
+{
+    if (sender.isOn) {
+        rtchatsdk::RTChatSDKMain::sharedInstance().startSendVideo();
+    }
+    else {
+        rtchatsdk::RTChatSDKMain::sharedInstance().stopSendVideo();
     }
 }
 
 -(IBAction)enableBeauty:(UISwitch*)sender
 {
     rtchatsdk::RTChatSDKMain::sharedInstance().enableBeautify(sender.isOn);
+}
+
+-(IBAction)RecordConference:(UISwitch*)sender
+{
+    if (sender.on) {
+        NSString* name = [[[NSUUID UUID] UUIDString] substringWithRange:NSMakeRange(0, 8)];
+        rtchatsdk::RTChatSDKMain::sharedInstance().startRecordConference([name UTF8String], true);
+    }
+    else {
+        rtchatsdk::RTChatSDKMain::sharedInstance().stopRecordConference();
+    }
 }
 
 -(void)allocLocalView
@@ -236,6 +259,35 @@
     _localVideoView = nil;
 }
 
+-(IBAction)PlatMusicAsMic:(UISwitch*)sender
+{
+    NSString* file_path = [[NSBundle mainBundle] pathForResource:@"lucky" ofType:@"mp4"];
+    if (sender.on) {
+        RTChatSDKMain::sharedInstance().startPlayFileAsSource([file_path UTF8String], kFileSourceAsOutput|kFileSourceAsInput);
+        
+        _MovieView  = (__bridge UIView*)rtchatsdk::RTChatSDKMain::sharedInstance().createAVideoWindow();
+        CGFloat width = 480;
+        CGFloat height = 360;
+        [_MovieView setFrame:CGRectMake(0, 0, width, height)];
+        [_MovieView setBackgroundColor:[UIColor blackColor]];
+        
+        [self.view insertSubview:_MovieView atIndex:5];
+        RTChatSDKMain::sharedInstance().observerMovieVideoWindow(true, (__bridge void*)_MovieView);
+    }
+    else {
+        RTChatSDKMain::sharedInstance().observerMovieVideoWindow(false);
+        [_MovieView removeFromSuperview];
+        rtchatsdk::RTChatSDKMain::sharedInstance().destroyAVideoRenderWindow((__bridge void*)_MovieView);
+        _MovieView = nil;
+        RTChatSDKMain::sharedInstance().stopPlayFileAsSource();
+    }
+}
+
+-(IBAction)PausePlay:(UISwitch*)sender
+{
+    RTChatSDKMain::sharedInstance().pausePlayFileAsSource(sender.on);
+}
+
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.roomInputField resignFirstResponder];
@@ -245,17 +297,6 @@
 {
     [self StopChat];
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
--(IBAction)switchBgMusic:(UISwitch*)sender
-{
-    NSString* file_path = [[NSBundle mainBundle] pathForResource:@"music48" ofType:@"wav"];
-    if (sender.on) {
-        RTChatSDKMain::sharedInstance().startPlayFileAsMic([file_path UTF8String], true);
-    }
-    else {
-        RTChatSDKMain::sharedInstance().stopPlayFileAsMic();
-    }
 }
 
 @end

@@ -38,7 +38,8 @@ namespace rtchatsdk {
         kVideoSourceNull,
         kVideoSourceFrontCamera,
         kVideoSourceBackCamera,
-        kVideoSourceScreen
+        kVideoSourceScreen,
+        kVideoSourceMediaFile
     };
     
     enum enMediaType
@@ -113,7 +114,7 @@ namespace rtchatsdk {
         /// 通知房间内用户视频位置信息
         enNotifyUserVideoLayout = 17,
 
-// user join room add wlf
+        // user join room add wlf
         enNotifyUserJoinRoom = 18,
 
         enNotifyUserLeaveRoom = 19,
@@ -159,6 +160,11 @@ namespace rtchatsdk {
         
         /// 渲染帧对象尺寸变化
         enFrameSizeChanged = 45,
+        
+        ///录制实时会议
+        enRecordConference = 46,
+
+		enMediaPlayStopped = 47
     };
     
     enum SdkErrorCode {
@@ -194,6 +200,12 @@ namespace rtchatsdk {
 		kMicrophoneType,      //Microphone
 		kSpeakerType  //speaker
 	};
+    
+    enum EnFileSourceUsefulType {
+        kFileSourceAsInput = 0x01,
+        kFileSourceAsOutput = 0x02,
+        kFileSourceReplaceInput = 0x04,
+    };
     
     typedef void (*MsgCallBackFunc)(SdkResponseCmd cmdType, SdkErrorCode error, const char* dataPtr, uint64_t dataSize);
 }

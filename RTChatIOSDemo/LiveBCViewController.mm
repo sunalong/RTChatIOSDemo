@@ -52,10 +52,12 @@
         [self.view insertSubview:ovideoView atIndex:1];
         _otherVideoView = ovideoView;
         
-        rtchatsdk::RTChatSDKMain::sharedInstance().startObserverRemoteVideo((__bridge void*)ovideoView);
+        rtchatsdk::RTChatSDKMain::sharedInstance().observerRemoteTargetVideo("", (__bridge void*)ovideoView);
+//        rtchatsdk::RTChatSDKMain::sharedInstance().startObserverRemoteVideo((__bridge void*)ovideoView);
     }
     else {
-        rtchatsdk::RTChatSDKMain::sharedInstance().stopObserverRemoteVideo();
+        rtchatsdk::RTChatSDKMain::sharedInstance().observerRemoteTargetVideo("", nullptr);
+//        rtchatsdk::RTChatSDKMain::sharedInstance().stopObserverRemoteVideo();
         
         [_otherVideoView removeFromSuperview];
         // destroy a render view

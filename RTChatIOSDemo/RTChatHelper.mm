@@ -10,6 +10,7 @@
 #include <string>
 #include <iostream>
 #import <UIKit/UIKit.h>
+#import "ALToastView.h"
 
 using namespace rtchatsdk;
 using namespace std::placeholders;
@@ -28,14 +29,17 @@ RTChatHelper& RTChatHelper::instance()
     return *s_rTChatHelper;
 }
 
-void RTChatHelper::init(const char* username, const char* appid, const char* appkey, const char* platfrom_addr, const char* cheat_src, const char* lice_server_ip)
+void RTChatHelper::init(const char* username, const char* appid, const char* appkey, const char* platfrom_addr, const char* cheat_src, const char* lice_server_ip, bool cdn_test)
 {
     srand( time( 0 ) );
+    
+    NSString* str_cdn_test = cdn_test ? @"true" : @"false";
+    
     RTChatSDKMain::sharedInstance().registerMsgCallback(sdkCallBack);
     
     RTChatSDKMain::sharedInstance().initSDK(appid, appkey);
 
-    NSDictionary* dic_data = [NSDictionary dictionaryWithObjectsAndKeys:@"http://giant.audio.mztgame.com/wangpan.php", @"VoiceUploadUrl", @"5853625c", @"XunfeiAppID", [NSString stringWithUTF8String:platfrom_addr], @"RoomServerAddr", [NSString stringWithUTF8String:lice_server_ip], @"LiveServerAddr", [NSString stringWithUTF8String:cheat_src], @"CheatingIP", NSTemporaryDirectory(), @"DebugLogPath",nil];
+    NSDictionary* dic_data = [NSDictionary dictionaryWithObjectsAndKeys:@"http://giant.audio.mztgame.com/wangpan.php", @"VoiceUploadUrl", @"5853625c", @"XunfeiAppID", [NSString stringWithUTF8String:platfrom_addr], @"RoomServerAddr", [NSString stringWithUTF8String:lice_server_ip], @"LiveServerAddr", [NSString stringWithUTF8String:cheat_src], @"CheatingIP", NSTemporaryDirectory(), @"DebugLogPath", str_cdn_test, @"CDN_TEST", nil];
     if ([NSJSONSerialization isValidJSONObject:dic_data]) {
         NSData* data = [NSJSONSerialization dataWithJSONObject:dic_data options:NSJSONWritingPrettyPrinted error:nil];
         NSString* data_str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -102,18 +106,18 @@ void RTChatHelper::voiceCallBack(SdkResponseCmd cmdType, SdkErrorCode error, con
 {
 //    std::cout << cmdType << "---" << error << "---" << dataPtr << std::endl;
     if (cmdType == enRequestEnterRoom) {
-        NSLog(@"%s", dataPtr);
+        [ALToastView toastInView:UIApplication.sharedApplication.keyWindow withText:[NSString stringWithUTF8String:dataPtr]];
     }
     else if (cmdType == enInitSDK) {
         if (error == OPERATION_OK) {
-            NSLog(@"初始化sdk成功");
+            [ALToastView toastInView:UIApplication.sharedApplication.keyWindow withText:@"初始化sdk成功"];
         }
         else {
-            NSLog(@"初始化sdk失败");
+            [ALToastView toastInView:UIApplication.sharedApplication.keyWindow withText:@"初始化sdk失败"];
         }
     }
     else if (cmdType == enRequestRec && error == OPERATION_OK) {
-        NSLog(@"录音回调结果：%s\n", dataPtr);
+        [ALToastView toastInView:UIApplication.sharedApplication.keyWindow withText:[NSString stringWithUTF8String:dataPtr]];
         _lastRecordUrl = dataPtr;
     }
     else if (cmdType == enFrameSizeChanged && error == OPERATION_OK) {
@@ -126,10 +130,18 @@ void RTChatHelper::voiceCallBack(SdkResponseCmd cmdType, SdkErrorCode error, con
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ON_FRMAE_SIZE_CHANGED" object:nil];
     }
     else if (cmdType == enNotifyUserJoinRoom) {
-        NSLog(@"新进用户：%s", dataPtr);
+        [ALToastView toastInView:UIApplication.sharedApplication.keyWindow withText:[NSString stringWithFormat:@"新进用户：%s", dataPtr]];
     }
     else if (cmdType == enNotifyUserLeaveRoom) {
-        NSLog(@"离开用户：%s", dataPtr);
+        [ALToastView toastInView:UIApplication.sharedApplication.keyWindow withText:[NSString stringWithFormat:@"离开用户：%s", dataPtr]];
+    }
+    else if (cmdType == enRecordConference) {
+        if (error == OPERATION_OK) {
+            [ALToastView toastInView:UIApplication.sharedApplication.keyWindow withText:[NSString stringWithUTF8String:dataPtr]];
+        }
+        else {
+            [ALToastView toastInView:UIApplication.sharedApplication.keyWindow withText:@"record conference failed"];
+        }
     }
 }
 

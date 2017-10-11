@@ -25,11 +25,15 @@
 
 @end
 
-@implementation LoginViewController
+@implementation LoginViewController {
+    bool    cdn_test;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    cdn_test = false;
     
     _userInputField.text = [LoginViewController getRandomName];
     
@@ -50,22 +54,22 @@
 
 -(IBAction)randomLogin
 {
-    RTChatHelper::instance().init([_userInputField.text UTF8String], [appID UTF8String], [appKey UTF8String], [choosedPlatfromAddr UTF8String], [_cheatingAddr.text UTF8String], [_liveServerAddr.text UTF8String]);
+    RTChatHelper::instance().init([_userInputField.text UTF8String], [appID UTF8String], [appKey UTF8String], [choosedPlatfromAddr UTF8String], [_cheatingAddr.text UTF8String], [_liveServerAddr.text UTF8String], cdn_test);
 }
 
 -(IBAction)WangxinLogin
 {
-    RTChatHelper::instance().init("wangxin", [appID UTF8String], [appKey UTF8String], [choosedPlatfromAddr UTF8String], [_cheatingAddr.text UTF8String], [_liveServerAddr.text UTF8String]);
+    RTChatHelper::instance().init("wangxin", [appID UTF8String], [appKey UTF8String], [choosedPlatfromAddr UTF8String], [_cheatingAddr.text UTF8String], [_liveServerAddr.text UTF8String], cdn_test);
 }
 
 -(IBAction)LuluLogin
 {
-    RTChatHelper::instance().init("lulu", [appID UTF8String], [appKey UTF8String], [choosedPlatfromAddr UTF8String], [_cheatingAddr.text UTF8String], [_liveServerAddr.text UTF8String]);
+    RTChatHelper::instance().init("lulu", [appID UTF8String], [appKey UTF8String], [choosedPlatfromAddr UTF8String], [_cheatingAddr.text UTF8String], [_liveServerAddr.text UTF8String], cdn_test);
 }
 
 -(IBAction)KiwiLogin
 {
-    RTChatHelper::instance().init("kiwi", [appID UTF8String], [appKey UTF8String], [choosedPlatfromAddr UTF8String], [_cheatingAddr.text UTF8String], [_liveServerAddr.text UTF8String]);
+    RTChatHelper::instance().init("kiwi", [appID UTF8String], [appKey UTF8String], [choosedPlatfromAddr UTF8String], [_cheatingAddr.text UTF8String], [_liveServerAddr.text UTF8String], cdn_test);
 }
 
 
@@ -91,6 +95,11 @@
         appID = @"3768c59536565afb";
         appKey = @"df191ec457951c35b8796697c204382d0e12d4e8cb56f54df6a54394be74c5fe";
     }
+}
+
+-(IBAction)OpenCdnTest:(UISwitch*)sender
+{
+    cdn_test = sender.on;
 }
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

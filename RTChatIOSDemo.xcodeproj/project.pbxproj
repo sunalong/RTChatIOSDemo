@@ -11,20 +11,11 @@
 		435599621E8CB77E0075E3A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 435599611E8CB77E0075E3A8 /* Assets.xcassets */; };
 		435599651E8CB77E0075E3A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 435599631E8CB77E0075E3A8 /* Main.storyboard */; };
 		43809DE71E8CBCFA009B95E7 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43809DE61E8CBCFA009B95E7 /* ViewController.mm */; };
-		43809E621E8CBE0F009B95E7 /* libRTChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E611E8CBE0F009B95E7 /* libRTChat.a */; };
-		43809E641E8CBE29009B95E7 /* librtc_common.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E631E8CBE29009B95E7 /* librtc_common.a */; };
-		43809E661E8CBE2A009B95E7 /* librtc_video.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E651E8CBE2A009B95E7 /* librtc_video.a */; };
-		43809E681E8CBE2E009B95E7 /* librtc_voice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E671E8CBE2E009B95E7 /* librtc_voice.a */; };
 		43809E6A1E8CBE4E009B95E7 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E691E8CBE4E009B95E7 /* libiconv.tbd */; };
 		43809E701E8CBE79009B95E7 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E6F1E8CBE79009B95E7 /* VideoToolbox.framework */; };
-		43809E721E8CBEBA009B95E7 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E711E8CBEBA009B95E7 /* iflyMSC.framework */; };
 		43809E741E8CBECB009B95E7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E731E8CBECB009B95E7 /* libz.tbd */; };
 		43809E761E8CBED7009B95E7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E751E8CBED7009B95E7 /* CoreTelephony.framework */; };
 		43809E7F1E8CBF64009B95E7 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43809E7E1E8CBF64009B95E7 /* AppDelegate.mm */; };
-		43809E871E8CBFEE009B95E7 /* librtc_common.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E811E8CBFEE009B95E7 /* librtc_common.a */; };
-		43809E891E8CBFEE009B95E7 /* librtc_voice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E831E8CBFEE009B95E7 /* librtc_voice.a */; };
-		43809E8A1E8CBFEE009B95E7 /* libRTChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E841E8CBFEE009B95E7 /* libRTChat.a */; };
-		43809E8B1E8CBFEE009B95E7 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E861E8CBFEE009B95E7 /* iflyMSC.framework */; };
 		43809E901E8CC08A009B95E7 /* LoginViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43809E8D1E8CC08A009B95E7 /* LoginViewController.mm */; };
 		43809E911E8CC08A009B95E7 /* RecorderViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 43809E8F1E8CC08A009B95E7 /* RecorderViewController.mm */; };
 		43809E931E8CC0D1009B95E7 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E921E8CC0D1009B95E7 /* AddressBook.framework */; };
@@ -34,10 +25,34 @@
 		43809E9C1E8CC101009B95E7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43809E9A1E8CC101009B95E7 /* LaunchScreen.storyboard */; };
 		BF149DB91F3B19F600723727 /* TestAudioViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF149DB61F3B19F600723727 /* TestAudioViewController.mm */; };
 		BF149DBA1F3B19F600723727 /* TestMulChannelViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF149DB81F3B19F600723727 /* TestMulChannelViewController.mm */; };
+		BF45DD911F8DCF7100C57B57 /* ALToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF45DD901F8DCF7100C57B57 /* ALToastView.m */; };
+		BF45DD921F8DD49D00C57B57 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E711E8CBEBA009B95E7 /* iflyMSC.framework */; };
 		BF89BC2E1EF0EFEE0099BE19 /* LiveBCViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF89BC2C1EF0EFEE0099BE19 /* LiveBCViewController.mm */; };
 		BF89BC2F1EF0EFEE0099BE19 /* RTChatHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF89BC2D1EF0EFEE0099BE19 /* RTChatHelper.mm */; };
+		BF9F28F41F8DC74E00DF9109 /* RTChat_d.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9F28F31F8DC74E00DF9109 /* RTChat_d.framework */; };
+		BF9F28F51F8DC74E00DF9109 /* RTChat_d.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF9F28F31F8DC74E00DF9109 /* RTChat_d.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF9F28FE1F8DCCDA00DF9109 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9F28FD1F8DCCDA00DF9109 /* libbz2.tbd */; };
+		BF9F29001F8DCD0F00DF9109 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9F28FF1F8DCD0F00DF9109 /* libsqlite3.tbd */; };
+		BF9F29021F8DCD2C00DF9109 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9F29011F8DCD2C00DF9109 /* CoreMedia.framework */; };
+		BF9F29041F8DCD3E00DF9109 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9F29031F8DCD3E00DF9109 /* AVFoundation.framework */; };
+		BF9F29051F8DCD5000DF9109 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E6B1E8CBE5C009B95E7 /* AudioToolbox.framework */; };
+		BF9F29071F8DCD5E00DF9109 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9F29061F8DCD5E00DF9109 /* libresolv.tbd */; };
 		BFA1ACF71F308B5A0098E0B7 /* MusicPlayTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA1ACF61F308B5A0098E0B7 /* MusicPlayTool.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BF9F28F61F8DC74E00DF9109 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF9F28F51F8DC74E00DF9109 /* RTChat_d.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		435599551E8CB77E0075E3A8 /* RTChatIOSDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RTChatIOSDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,10 +76,6 @@
 		43809E751E8CBED7009B95E7 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		43809E791E8CBF08009B95E7 /* RTChatHelper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RTChatHelper.hpp; sourceTree = "<group>"; };
 		43809E7E1E8CBF64009B95E7 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		43809E811E8CBFEE009B95E7 /* librtc_common.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtc_common.a; sourceTree = "<group>"; };
-		43809E821E8CBFEE009B95E7 /* librtc_video.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtc_video.a; sourceTree = "<group>"; };
-		43809E831E8CBFEE009B95E7 /* librtc_voice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = librtc_voice.a; sourceTree = "<group>"; };
-		43809E841E8CBFEE009B95E7 /* libRTChat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libRTChat.a; sourceTree = "<group>"; };
 		43809E861E8CBFEE009B95E7 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		43809E8C1E8CC08A009B95E7 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		43809E8D1E8CC08A009B95E7 /* LoginViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LoginViewController.mm; sourceTree = "<group>"; };
@@ -79,11 +90,19 @@
 		BF149DB61F3B19F600723727 /* TestAudioViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestAudioViewController.mm; sourceTree = "<group>"; };
 		BF149DB71F3B19F600723727 /* TestMulChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMulChannelViewController.h; sourceTree = "<group>"; };
 		BF149DB81F3B19F600723727 /* TestMulChannelViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestMulChannelViewController.mm; sourceTree = "<group>"; };
-		BF89BC291EEFF32F0099BE19 /* RTChatSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTChatSdk.h; sourceTree = "<group>"; };
-		BF89BC2A1EEFF3650099BE19 /* RTChatCommonTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTChatCommonTypes.h; sourceTree = "<group>"; };
+		BF45DD8F1F8DCF7100C57B57 /* ALToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALToastView.h; sourceTree = "<group>"; };
+		BF45DD901F8DCF7100C57B57 /* ALToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALToastView.m; sourceTree = "<group>"; };
 		BF89BC2B1EF0EFEE0099BE19 /* LiveBCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveBCViewController.h; sourceTree = "<group>"; };
 		BF89BC2C1EF0EFEE0099BE19 /* LiveBCViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LiveBCViewController.mm; sourceTree = "<group>"; };
 		BF89BC2D1EF0EFEE0099BE19 /* RTChatHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RTChatHelper.mm; sourceTree = "<group>"; };
+		BF9F28F31F8DC74E00DF9109 /* RTChat_d.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RTChat_d.framework; path = RTChatIOSDemo/libs/RTChat_d.framework; sourceTree = "<group>"; };
+		BF9F28F91F8DC8AE00DF9109 /* RTChatCommonTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTChatCommonTypes.h; sourceTree = "<group>"; };
+		BF9F28FA1F8DC8AE00DF9109 /* RTChatSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTChatSdk.h; sourceTree = "<group>"; };
+		BF9F28FD1F8DCCDA00DF9109 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libbz2.tbd; sourceTree = DEVELOPER_DIR; };
+		BF9F28FF1F8DCD0F00DF9109 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libsqlite3.tbd; sourceTree = DEVELOPER_DIR; };
+		BF9F29011F8DCD2C00DF9109 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		BF9F29031F8DCD3E00DF9109 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		BF9F29061F8DCD5E00DF9109 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libresolv.tbd; sourceTree = DEVELOPER_DIR; };
 		BFA1ACF51F308B5A0098E0B7 /* MusicPlayTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicPlayTool.h; sourceTree = "<group>"; };
 		BFA1ACF61F308B5A0098E0B7 /* MusicPlayTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicPlayTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,24 +112,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF45DD921F8DD49D00C57B57 /* iflyMSC.framework in Frameworks */,
+				BF9F29071F8DCD5E00DF9109 /* libresolv.tbd in Frameworks */,
+				BF9F29051F8DCD5000DF9109 /* AudioToolbox.framework in Frameworks */,
+				BF9F29041F8DCD3E00DF9109 /* AVFoundation.framework in Frameworks */,
+				BF9F29021F8DCD2C00DF9109 /* CoreMedia.framework in Frameworks */,
+				BF9F29001F8DCD0F00DF9109 /* libsqlite3.tbd in Frameworks */,
+				BF9F28FE1F8DCCDA00DF9109 /* libbz2.tbd in Frameworks */,
+				43809E741E8CBECB009B95E7 /* libz.tbd in Frameworks */,
+				BF9F28F41F8DC74E00DF9109 /* RTChat_d.framework in Frameworks */,
 				43809E991E8CC0E9009B95E7 /* MediaPlayer.framework in Frameworks */,
 				43809E971E8CC0DF009B95E7 /* AssetsLibrary.framework in Frameworks */,
 				43809E951E8CC0D6009B95E7 /* Contacts.framework in Frameworks */,
 				43809E931E8CC0D1009B95E7 /* AddressBook.framework in Frameworks */,
-				43809E871E8CBFEE009B95E7 /* librtc_common.a in Frameworks */,
 				43809E761E8CBED7009B95E7 /* CoreTelephony.framework in Frameworks */,
-				43809E8A1E8CBFEE009B95E7 /* libRTChat.a in Frameworks */,
-				43809E891E8CBFEE009B95E7 /* librtc_voice.a in Frameworks */,
-				43809E741E8CBECB009B95E7 /* libz.tbd in Frameworks */,
-				43809E661E8CBE2A009B95E7 /* librtc_video.a in Frameworks */,
-				43809E721E8CBEBA009B95E7 /* iflyMSC.framework in Frameworks */,
-				43809E8B1E8CBFEE009B95E7 /* iflyMSC.framework in Frameworks */,
 				43809E701E8CBE79009B95E7 /* VideoToolbox.framework in Frameworks */,
 				43809E6A1E8CBE4E009B95E7 /* libiconv.tbd in Frameworks */,
-				43809E621E8CBE0F009B95E7 /* libRTChat.a in Frameworks */,
-				43809E641E8CBE29009B95E7 /* librtc_common.a in Frameworks */,
-				43809E661E8CBE2A009B95E7 /* librtc_video.a in Frameworks */,
-				43809E681E8CBE2E009B95E7 /* librtc_voice.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +137,7 @@
 		4355994C1E8CB77E0075E3A8 = {
 			isa = PBXGroup;
 			children = (
+				BF9F28F31F8DC74E00DF9109 /* RTChat_d.framework */,
 				435599571E8CB77E0075E3A8 /* RTChatIOSDemo */,
 				435599561E8CB77E0075E3A8 /* Products */,
 				43809E601E8CBE0F009B95E7 /* Frameworks */,
@@ -137,6 +155,10 @@
 		435599571E8CB77E0075E3A8 /* RTChatIOSDemo */ = {
 			isa = PBXGroup;
 			children = (
+				BF45DD8F1F8DCF7100C57B57 /* ALToastView.h */,
+				BF45DD901F8DCF7100C57B57 /* ALToastView.m */,
+				BF9F28F91F8DC8AE00DF9109 /* RTChatCommonTypes.h */,
+				BF9F28FA1F8DC8AE00DF9109 /* RTChatSdk.h */,
 				BF149DB51F3B19F600723727 /* TestAudioViewController.h */,
 				BF149DB61F3B19F600723727 /* TestAudioViewController.mm */,
 				BF149DB71F3B19F600723727 /* TestMulChannelViewController.h */,
@@ -146,8 +168,6 @@
 				43809E801E8CBFEE009B95E7 /* libs */,
 				435599581E8CB77E0075E3A8 /* AppDelegate.h */,
 				43809E7E1E8CBF64009B95E7 /* AppDelegate.mm */,
-				BF89BC291EEFF32F0099BE19 /* RTChatSdk.h */,
-				BF89BC2A1EEFF3650099BE19 /* RTChatCommonTypes.h */,
 				BF89BC2B1EF0EFEE0099BE19 /* LiveBCViewController.h */,
 				BF89BC2C1EF0EFEE0099BE19 /* LiveBCViewController.mm */,
 				BF89BC2D1EF0EFEE0099BE19 /* RTChatHelper.mm */,
@@ -178,6 +198,11 @@
 		43809E601E8CBE0F009B95E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF9F29061F8DCD5E00DF9109 /* libresolv.tbd */,
+				BF9F29031F8DCD3E00DF9109 /* AVFoundation.framework */,
+				BF9F29011F8DCD2C00DF9109 /* CoreMedia.framework */,
+				BF9F28FF1F8DCD0F00DF9109 /* libsqlite3.tbd */,
+				BF9F28FD1F8DCCDA00DF9109 /* libbz2.tbd */,
 				43809E981E8CC0E9009B95E7 /* MediaPlayer.framework */,
 				43809E961E8CC0DF009B95E7 /* AssetsLibrary.framework */,
 				43809E941E8CC0D6009B95E7 /* Contacts.framework */,
@@ -200,10 +225,6 @@
 		43809E801E8CBFEE009B95E7 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				43809E811E8CBFEE009B95E7 /* librtc_common.a */,
-				43809E821E8CBFEE009B95E7 /* librtc_video.a */,
-				43809E831E8CBFEE009B95E7 /* librtc_voice.a */,
-				43809E841E8CBFEE009B95E7 /* libRTChat.a */,
 				43809E851E8CBFEE009B95E7 /* xunfei */,
 			);
 			path = libs;
@@ -227,6 +248,7 @@
 				435599511E8CB77E0075E3A8 /* Sources */,
 				435599521E8CB77E0075E3A8 /* Frameworks */,
 				435599531E8CB77E0075E3A8 /* Resources */,
+				BF9F28F61F8DC74E00DF9109 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -295,6 +317,7 @@
 				43809E911E8CC08A009B95E7 /* RecorderViewController.mm in Sources */,
 				43809E7F1E8CBF64009B95E7 /* AppDelegate.mm in Sources */,
 				43809E901E8CC08A009B95E7 /* LoginViewController.mm in Sources */,
+				BF45DD911F8DCF7100C57B57 /* ALToastView.m in Sources */,
 				BF149DB91F3B19F600723727 /* TestAudioViewController.mm in Sources */,
 				BF89BC2F1EF0EFEE0099BE19 /* RTChatHelper.mm in Sources */,
 				BF89BC2E1EF0EFEE0099BE19 /* LiveBCViewController.mm in Sources */,
@@ -423,10 +446,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RTChatIOSDemo/libs/xunfei",
+					"$(PROJECT_DIR)/RTChatIOSDemo/libs",
 				);
 				INFOPLIST_FILE = RTChatIOSDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RTChatIOSDemo/libs",
@@ -453,10 +477,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RTChatIOSDemo/libs/xunfei",
+					"$(PROJECT_DIR)/RTChatIOSDemo/libs",
 				);
 				INFOPLIST_FILE = RTChatIOSDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RTChatIOSDemo/libs",

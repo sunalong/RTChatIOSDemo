@@ -36,7 +36,7 @@ using namespace rtchatsdk;
 
 -(IBAction)BeginChat
 {
-    RTChatSDKMain::sharedInstance().requestJoinPlatformRoom([_RoomInputField.text UTF8String]);
+    RTChatSDKMain::sharedInstance().requestJoinPlatformRoom([_RoomInputField.text UTF8String], kVoiceOnly|kMusicLowMark);
 }
 
 -(IBAction)StopChat
@@ -55,9 +55,8 @@ using namespace rtchatsdk;
         [_LocalVideoView setBackgroundColor:[UIColor blackColor]];
         
         [self.view insertSubview:_LocalVideoView atIndex:5];
-        if (RTChatSDKMain::sharedInstance().startSendVideo() == OPERATION_OK) {
-            RTChatSDKMain::sharedInstance().observerLocalVideoWindow(true, (__bridge void*)_LocalVideoView);
-        }
+        RTChatSDKMain::sharedInstance().observerLocalVideoWindow(true, (__bridge void*)_LocalVideoView);
+        RTChatSDKMain::sharedInstance().startSendVideo();
     }
     else {
         RTChatSDKMain::sharedInstance().observerLocalVideoWindow(false);

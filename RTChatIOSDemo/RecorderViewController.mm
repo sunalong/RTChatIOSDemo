@@ -29,7 +29,7 @@
 
 -(IBAction)BeginRecord
 {
-    rtchatsdk::RTChatSDKMain::sharedInstance().startRecordVoice(true);
+    rtchatsdk::RTChatSDKMain::sharedInstance().startRecordVoice(false, true);
 }
 
 -(IBAction)StopRecord
@@ -65,7 +65,7 @@
 
 -(IBAction)switchBgMusic:(UISwitch*)sender
 {
-    NSString* file_path = [[NSBundle mainBundle] pathForResource:@"music48" ofType:@"wav"];
+    NSString* file_path = [[NSBundle mainBundle] pathForResource:@"lucky" ofType:@"mp4"];
     if (sender.on) {
         [MusicPlayTool.tool playMusicWithFileName:file_path];
     }
