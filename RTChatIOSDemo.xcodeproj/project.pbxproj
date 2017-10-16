@@ -26,7 +26,6 @@
 		BF149DB91F3B19F600723727 /* TestAudioViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF149DB61F3B19F600723727 /* TestAudioViewController.mm */; };
 		BF149DBA1F3B19F600723727 /* TestMulChannelViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF149DB81F3B19F600723727 /* TestMulChannelViewController.mm */; };
 		BF45DD911F8DCF7100C57B57 /* ALToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF45DD901F8DCF7100C57B57 /* ALToastView.m */; };
-		BF45DD921F8DD49D00C57B57 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E711E8CBEBA009B95E7 /* iflyMSC.framework */; };
 		BF89BC2E1EF0EFEE0099BE19 /* LiveBCViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF89BC2C1EF0EFEE0099BE19 /* LiveBCViewController.mm */; };
 		BF89BC2F1EF0EFEE0099BE19 /* RTChatHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF89BC2D1EF0EFEE0099BE19 /* RTChatHelper.mm */; };
 		BF9F28F41F8DC74E00DF9109 /* RTChat_d.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9F28F31F8DC74E00DF9109 /* RTChat_d.framework */; };
@@ -63,10 +62,6 @@
 		435599641E8CB77E0075E3A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		435599661E8CB77E0075E3A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43809DE61E8CBCFA009B95E7 /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
-		43809E611E8CBE0F009B95E7 /* libRTChat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRTChat.a; path = RTChatIOSDemo/libs/libRTChat.a; sourceTree = "<group>"; };
-		43809E631E8CBE29009B95E7 /* librtc_common.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librtc_common.a; path = RTChatIOSDemo/libs/librtc_common.a; sourceTree = "<group>"; };
-		43809E651E8CBE2A009B95E7 /* librtc_video.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librtc_video.a; path = RTChatIOSDemo/libs/librtc_video.a; sourceTree = "<group>"; };
-		43809E671E8CBE2E009B95E7 /* librtc_voice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librtc_voice.a; path = RTChatIOSDemo/libs/librtc_voice.a; sourceTree = "<group>"; };
 		43809E691E8CBE4E009B95E7 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libiconv.tbd; sourceTree = DEVELOPER_DIR; };
 		43809E6B1E8CBE5C009B95E7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
 		43809E6D1E8CBE6C009B95E7 /* MediaToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaToolbox.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/MediaToolbox.framework; sourceTree = DEVELOPER_DIR; };
@@ -112,7 +107,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF45DD921F8DD49D00C57B57 /* iflyMSC.framework in Frameworks */,
 				BF9F29071F8DCD5E00DF9109 /* libresolv.tbd in Frameworks */,
 				BF9F29051F8DCD5000DF9109 /* AudioToolbox.framework in Frameworks */,
 				BF9F29041F8DCD3E00DF9109 /* AVFoundation.framework in Frameworks */,
@@ -214,10 +208,6 @@
 				43809E6D1E8CBE6C009B95E7 /* MediaToolbox.framework */,
 				43809E6B1E8CBE5C009B95E7 /* AudioToolbox.framework */,
 				43809E691E8CBE4E009B95E7 /* libiconv.tbd */,
-				43809E671E8CBE2E009B95E7 /* librtc_voice.a */,
-				43809E651E8CBE2A009B95E7 /* librtc_video.a */,
-				43809E631E8CBE29009B95E7 /* librtc_common.a */,
-				43809E611E8CBE0F009B95E7 /* libRTChat.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
