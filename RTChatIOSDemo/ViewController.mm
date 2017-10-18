@@ -233,7 +233,7 @@
 {
     if (sender.on) {
         NSString* name = [[[NSUUID UUID] UUIDString] substringWithRange:NSMakeRange(0, 8)];
-        rtchatsdk::RTChatSDKMain::sharedInstance().startRecordConference([name UTF8String], true);
+        rtchatsdk::RTChatSDKMain::sharedInstance().startRecordConference([name UTF8String], true, "192.168.114.6/hls");
     }
     else {
         rtchatsdk::RTChatSDKMain::sharedInstance().stopRecordConference();

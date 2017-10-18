@@ -29,7 +29,7 @@
 
 -(IBAction)BeginRecord
 {
-    rtchatsdk::RTChatSDKMain::sharedInstance().startRecordVoice(false, true);
+    rtchatsdk::RTChatSDKMain::sharedInstance().startRecordVoice(false, true, 2);
 }
 
 -(IBAction)StopRecord

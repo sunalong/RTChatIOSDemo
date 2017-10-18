@@ -117,7 +117,10 @@ public:
     /**********IM interface begin**********/
     
     /// 开始录制麦克风数据(主线程)
-    SdkErrorCode startRecordVoice(bool needConvertWord = false, bool isPersis = false);
+    /// ispersis为true，则录制数据长期保存，否则在服务器上临时保存1周
+    /// needConvertWord表示录制的音频信息会被翻译成文字，并回调给用户，注意只有在初始化传入了xunfeiAppID才有效
+    /// scale_rate为录制声音的放大倍率，默认1.0，用户可根据需求调整
+    SdkErrorCode startRecordVoice(bool needConvertWord = false, bool isPersis = false, float scale_rate = 1.0);
     
     /// 停止录制麦克风数据(主线程)
     SdkErrorCode stopRecordVoice();
@@ -166,25 +169,25 @@ public:
     /// search to file position and play
     SdkErrorCode searchToFilePos(int file_pos);
 
-	//set play audio track index
+	/// set play audio track index, index0 is music+voice, index1 is music
 	SdkErrorCode setAudioTrack(int index);
 
-	//music音量范围为0~100， 默认100 为原始文件音量；
+	/// 调整播放的mtv文件的输出音量, music音量范围为0~100， 默认100 为原始文件音量；该音量仅影响内置播放器的输出音量，不影响设备mic的音量
 	SdkErrorCode adjustMusicVolume(int volume);
 
-	//get current player position
+	/// get current player position, ms
 	int getFileCurrentPosition();
 
-	//get file total duration;
+	/// get file total duration, ms
 	int getFileDuration();
 
-	//get current playing audio track
+	/// get current playing audio track
 	int getPlayingAudioTrack();
 
-	//get all available audio tracks; 
+	/// get all available audio tracks;
 	const char* getAvailableAudioTracks();
     
-    /// 打开或关闭视频文件播放窗口
+    /// open or close video file playing window
     SdkErrorCode observerMovieVideoWindow(bool enable, void* ptrWindow = nullptr);
     
     /**********MediaPlayer interface end**********/
@@ -197,8 +200,8 @@ public:
     //interval 指定音量提示的时间间隔; <10; 禁用音量提示功能; >=10;提示间隔，单位为毫秒，建议设置到大于等于500毫秒；
     SdkErrorCode enableAudioVolumeIndication(int interval);
     
-    /// 开始录制会场音视频
-    SdkErrorCode startRecordConference(const char* record_name, bool need_record_video = false);
+    /// 开始录制会场音视频(host_url为null,则默认写入官方存储，提供接口给用户拉流，否则直接写入用户指定的http服务器, host_uri样例"192.168.114.6/hls")
+    SdkErrorCode startRecordConference(const char* record_name, bool need_record_video = false, const char* host_uri = nullptr);
     
     /// 停止录制会场音视频
     SdkErrorCode stopRecordConference();

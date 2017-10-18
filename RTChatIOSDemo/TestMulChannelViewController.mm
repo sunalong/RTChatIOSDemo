@@ -36,7 +36,7 @@ using namespace rtchatsdk;
 
 -(IBAction)BeginChat
 {
-    RTChatSDKMain::sharedInstance().requestJoinPlatformRoom([_RoomInputField.text UTF8String], kVoiceOnly|kMusicLowMark);
+    RTChatSDKMain::sharedInstance().requestJoinPlatformRoom([_RoomInputField.text UTF8String], kVoiceOnly|kVoiceLowMark);
 }
 
 -(IBAction)StopChat
