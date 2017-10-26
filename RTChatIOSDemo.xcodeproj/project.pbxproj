@@ -26,7 +26,6 @@
 		BF149DB91F3B19F600723727 /* TestAudioViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF149DB61F3B19F600723727 /* TestAudioViewController.mm */; };
 		BF149DBA1F3B19F600723727 /* TestMulChannelViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF149DB81F3B19F600723727 /* TestMulChannelViewController.mm */; };
 		BF268B5C1F9705E1007E1F23 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E711E8CBEBA009B95E7 /* iflyMSC.framework */; };
-		BF268B5E1F9705F7007E1F23 /* RTChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF268B5D1F9705F7007E1F23 /* RTChat.framework */; };
 		BF45DD911F8DCF7100C57B57 /* ALToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF45DD901F8DCF7100C57B57 /* ALToastView.m */; };
 		BF89BC2E1EF0EFEE0099BE19 /* LiveBCViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF89BC2C1EF0EFEE0099BE19 /* LiveBCViewController.mm */; };
 		BF89BC2F1EF0EFEE0099BE19 /* RTChatHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = BF89BC2D1EF0EFEE0099BE19 /* RTChatHelper.mm */; };
@@ -37,6 +36,7 @@
 		BF9F29051F8DCD5000DF9109 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43809E6B1E8CBE5C009B95E7 /* AudioToolbox.framework */; };
 		BF9F29071F8DCD5E00DF9109 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9F29061F8DCD5E00DF9109 /* libresolv.tbd */; };
 		BFA1ACF71F308B5A0098E0B7 /* MusicPlayTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BFA1ACF61F308B5A0098E0B7 /* MusicPlayTool.m */; };
+		BFD24EC11FA17D9200E17EBC /* RTChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF268B5D1F9705F7007E1F23 /* RTChat.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -87,6 +87,7 @@
 		BF268B5D1F9705F7007E1F23 /* RTChat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RTChat.framework; path = RTChatIOSDemo/libs/RTChat.framework; sourceTree = "<group>"; };
 		BF45DD8F1F8DCF7100C57B57 /* ALToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALToastView.h; sourceTree = "<group>"; };
 		BF45DD901F8DCF7100C57B57 /* ALToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALToastView.m; sourceTree = "<group>"; };
+		BF6975E61FA08DBD0005A6B3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		BF89BC2B1EF0EFEE0099BE19 /* LiveBCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveBCViewController.h; sourceTree = "<group>"; };
 		BF89BC2C1EF0EFEE0099BE19 /* LiveBCViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LiveBCViewController.mm; sourceTree = "<group>"; };
 		BF89BC2D1EF0EFEE0099BE19 /* RTChatHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RTChatHelper.mm; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		BF9F29061F8DCD5E00DF9109 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/usr/lib/libresolv.tbd; sourceTree = DEVELOPER_DIR; };
 		BFA1ACF51F308B5A0098E0B7 /* MusicPlayTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicPlayTool.h; sourceTree = "<group>"; };
 		BFA1ACF61F308B5A0098E0B7 /* MusicPlayTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicPlayTool.m; sourceTree = "<group>"; };
+		BFD24EBD1FA0987D00E17EBC /* Xcode.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = Xcode.app; path = ../../../../Applications/Xcode.app; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF268B5E1F9705F7007E1F23 /* RTChat.framework in Frameworks */,
+				BFD24EC11FA17D9200E17EBC /* RTChat.framework in Frameworks */,
 				BF268B5C1F9705E1007E1F23 /* iflyMSC.framework in Frameworks */,
 				BF9F29071F8DCD5E00DF9109 /* libresolv.tbd in Frameworks */,
 				BF9F29051F8DCD5000DF9109 /* AudioToolbox.framework in Frameworks */,
@@ -191,6 +193,8 @@
 		43809E601E8CBE0F009B95E7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BFD24EBD1FA0987D00E17EBC /* Xcode.app */,
+				BF6975E61FA08DBD0005A6B3 /* QuartzCore.framework */,
 				BF268B5D1F9705F7007E1F23 /* RTChat.framework */,
 				BF9F29061F8DCD5E00DF9109 /* libresolv.tbd */,
 				BF9F29031F8DCD3E00DF9109 /* AVFoundation.framework */,
@@ -428,6 +432,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_MODULES_AUTOLINK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: ziwei jiang (9Y774V6JJF)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -459,6 +464,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_MODULES_AUTOLINK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: ziwei jiang (9Y774V6JJF)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMBINE_HIDPI_IMAGES = YES;
